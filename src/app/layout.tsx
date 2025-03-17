@@ -1,6 +1,8 @@
 import './globals.css'
 import { Montserrat, Open_Sans } from 'next/font/google'
+import { Metadata } from 'next'
 
+// Font configuration
 const montserrat = Montserrat({ 
   subsets: ['latin'],
   variable: '--font-montserrat',
@@ -13,9 +15,43 @@ const openSans = Open_Sans({
   display: 'swap',
 })
 
-export const metadata = {
+// Metadata for SEO
+export const metadata: Metadata = {
   title: 'FloLo Holistic - Investment Opportunity',
-  description: 'Join FloLo Holistic in shaping the future of wellness. A profitable NYC wellness center seeking strategic investment partners.',
+  description: 'Join FloLo Holistic in shaping the future of wellness. A profitable NYC wellness center seeking strategic investment partners with $650K revenue and $64,591 net profit in 2024.',
+  keywords: 'FloLo Holistic, wellness investment, NYC wellness center, holistic wellness, investment opportunity, acupuncture, floatation therapy, wellness business',
+  authors: [{ name: 'Joel Granik', url: 'https://floloholistic.com' }],
+  creator: 'Joel Granik',
+  publisher: 'FloLo Holistic',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://floloholistic.com',
+    title: 'FloLo Holistic - NYC Wellness Investment Opportunity',
+    description: 'Invest in FloLo Holistic, a profitable NYC wellness center with $650K revenue. Seeking $100K-$150K investment for significant equity stake.',
+    siteName: 'FloLo Holistic Investment',
+    images: [
+      {
+        url: '/images/Logo Purple Landscape.png',
+        width: 1200,
+        height: 630,
+        alt: 'FloLo Holistic Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'FloLo Holistic - NYC Wellness Investment Opportunity',
+    description: 'Invest in FloLo Holistic, a profitable NYC wellness center with $650K revenue. Seeking $100K-$150K investment for significant equity stake.',
+    images: ['/images/Logo Purple Landscape.png'],
+    creator: '@floloholistic',
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+  themeColor: '#4CAF50',
 }
 
 export default function RootLayout({
@@ -24,8 +60,23 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}>
-      <body className="bg-white">{children}</body>
+    <html 
+      lang="en" 
+      className={`${montserrat.variable} ${openSans.variable} scroll-smooth`}
+    >
+      <body className="bg-white text-gray-900 antialiased">
+        {/* Skip to content link for accessibility */}
+        <a 
+          href="#main-content" 
+          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary"
+        >
+          Skip to content
+        </a>
+        
+        <main id="main-content">
+          {children}
+        </main>
+      </body>
     </html>
   )
-} 
+}
