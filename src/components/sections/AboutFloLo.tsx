@@ -139,14 +139,13 @@ export default function AboutFloLo() {
           {services.map((service, index) => (
             <motion.div
               key={service.name}
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`p-6 rounded-lg transition-all duration-300 ${
                 activeService === index
                   ? 'bg-primary text-white shadow-lg scale-105'
                   : 'bg-white hover:bg-primary/5'
               }`}
-              onClick={(e) => handleServiceClick(index, e)}
-              whileHover={{ scale: activeService === index ? 1.05 : 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              onMouseEnter={() => setActiveService(index)}
+              whileHover={{ scale: 1.02 }}
             >
               <div className="text-4xl mb-3">{service.icon}</div>
               <h3 className="font-semibold mb-2">{service.name}</h3>
@@ -165,7 +164,7 @@ export default function AboutFloLo() {
             key={activeService}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
             className="w-full h-[400px] relative rounded-lg overflow-hidden"
           >
             <Image

@@ -209,14 +209,13 @@ export default function MarketOpportunity() {
           {marketCards.map((card, index) => (
             <motion.div
               key={card.name}
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 relative ${
+              className={`p-6 rounded-lg transition-all duration-300 relative ${
                 activeCard === index
                   ? 'bg-primary text-white shadow-lg scale-105'
                   : 'bg-white hover:bg-primary/5'
               }`}
-              onClick={(e) => setActiveCard(index)}
-              whileHover={{ scale: activeCard === index ? 1.05 : 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              onMouseEnter={() => setActiveCard(index)}
+              whileHover={{ scale: 1.02 }}
             >
               <div className="text-4xl mb-3">{card.icon}</div>
               <h3 className="font-semibold mb-2">{card.name}</h3>
@@ -225,14 +224,6 @@ export default function MarketOpportunity() {
               }`}>
                 {card.description}
               </p>
-              {/* Click indicator */}
-              <div className={`absolute top-4 right-4 ${
-                activeCard === index ? 'text-white' : 'text-primary'
-              } animate-pulse`}>
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-                </svg>
-              </div>
             </motion.div>
           ))}
         </div>
@@ -243,7 +234,7 @@ export default function MarketOpportunity() {
             key={activeCard}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
           >
             {marketCards[activeCard].content.title && (
               <h3 className="text-xl font-bold text-gray-900 mb-4">
