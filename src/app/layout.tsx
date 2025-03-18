@@ -1,6 +1,7 @@
 import './globals.css'
 import { Montserrat, Open_Sans } from 'next/font/google'
 import { Metadata, Viewport } from 'next'
+import StyledComponentsRegistry from '../lib/registry'
 
 // Font configuration
 const montserrat = Montserrat({ 
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Joel Granik', url: 'https://floloholistic.com' }],
   creator: 'Joel Granik',
   publisher: 'FloLo Holistic',
+  metadataBase: new URL('https://floloholistic.com'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -62,22 +64,21 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html 
-      lang="en" 
-      className={`${montserrat.variable} ${openSans.variable} scroll-smooth`}
-    >
-      <body className="bg-white text-gray-900 antialiased">
-        {/* Skip to content link for accessibility */}
-        <a 
-          href="#main-content" 
-          className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary"
-        >
-          Skip to content
-        </a>
-        
-        <main id="main-content">
-          {children}
-        </main>
+    <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}>
+      <body>
+        <StyledComponentsRegistry>
+          {/* Skip to content link for accessibility */}
+          <a 
+            href="#main-content" 
+            className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-white focus:text-primary"
+          >
+            Skip to content
+          </a>
+          
+          <main id="main-content">
+            {children}
+          </main>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
