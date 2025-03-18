@@ -27,6 +27,7 @@
     "typescript": "latest"
   },
   "devDependencies": {
+    "@agentdeskai/browser-tools-server": "^1.1.0",
     "@tailwindcss/forms": "^0.5.10",
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.17",

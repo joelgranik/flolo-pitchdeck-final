@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import SectionWrapper from '../SectionWrapper'
 
 const milestones = [
@@ -71,8 +72,15 @@ export default function FounderSpotlight() {
             className="bg-white p-8 rounded-lg shadow-lg"
           >
             <div className="flex items-center space-x-4 mb-6">
-              <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center">
-                <span className="text-4xl">👨‍💼</span>
+              <div className="w-20 h-20 rounded-full overflow-hidden">
+                <Image
+                  src="/images/joel-granik-headshot.jpg"
+                  alt="Joel Granik"
+                  width={200}
+                  height={200}
+                  priority
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-gray-900">Joel Granik</h3>

@@ -150,65 +150,6 @@ export default function GrowthStrategy() {
         </div>
       </div>
 
-      {/* Timeline */}
-      <div className="bg-primary/5 rounded-lg p-8">
-        <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-          Implementation Timeline
-        </h3>
-        <div className="max-w-3xl mx-auto">
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute h-full w-0.5 bg-primary left-9 top-0" />
-
-            {/* Timeline items */}
-            <div className="space-y-12">
-              <div className="relative flex items-start">
-                <div className="absolute left-0 w-[74px] text-sm text-gray-500">
-                  Month 1-2
-                </div>
-                <div className="h-4 w-4 bg-primary rounded-full ml-7" />
-                <div className="ml-8">
-                  <h4 className="font-semibold text-gray-900">Location Secured</h4>
-                  <p className="text-gray-600">New lease signed and space preparation begins</p>
-                </div>
-              </div>
-
-              <div className="relative flex items-start">
-                <div className="absolute left-0 w-[74px] text-sm text-gray-500">
-                  Month 2-4
-                </div>
-                <div className="h-4 w-4 bg-primary rounded-full ml-7" />
-                <div className="ml-8">
-                  <h4 className="font-semibold text-gray-900">Facility Upgrades</h4>
-                  <p className="text-gray-600">Installation of new equipment and amenities</p>
-                </div>
-              </div>
-
-              <div className="relative flex items-start">
-                <div className="absolute left-0 w-[74px] text-sm text-gray-500">
-                  Month 3-6
-                </div>
-                <div className="h-4 w-4 bg-primary rounded-full ml-7" />
-                <div className="ml-8">
-                  <h4 className="font-semibold text-gray-900">Marketing Launch</h4>
-                  <p className="text-gray-600">New marketing campaigns and partnership outreach</p>
-                </div>
-              </div>
-
-              <div className="relative flex items-start">
-                <div className="absolute left-0 w-[74px] text-sm text-gray-500">
-                  Month 12+
-                </div>
-                <div className="h-4 w-4 bg-primary rounded-full ml-7" />
-                <div className="ml-8">
-                  <h4 className="font-semibold text-gray-900">Revenue Target</h4>
-                  <p className="text-gray-600">Reaching monthly revenue goals and scaling operations</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </SectionWrapper>
   )
 } 

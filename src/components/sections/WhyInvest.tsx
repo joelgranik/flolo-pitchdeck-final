@@ -138,26 +138,6 @@ export default function WhyInvest() {
           </motion.div>
         ))}
       </div>
-
-      {/* Call to Action */}
-      <div className="mt-16 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="bg-primary/5 p-8 rounded-lg inline-block"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 mb-4">
-            Ready to Join Our Growth Journey?
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Invest $100,000 - $150,000 for a significant equity stake in FloLo's
-            expansion.
-          </p>
-          <a href="#contact" className="button-primary">
-            Schedule a Discussion
-          </a>
-        </motion.div>
-      </div>
     </SectionWrapper>
   )
 } 
