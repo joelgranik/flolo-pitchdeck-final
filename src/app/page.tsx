@@ -27,10 +27,10 @@ export default function Home() {
       <FloatImage />
       <WhyInvest />
       <VideoSection />
-      <InvestorTypes />
       <FounderSpotlight />
       <FinancialPerformance />
       <InvestmentOpportunity />
+      <InvestorTypes />
       <ContactUs />
     </main>
   )

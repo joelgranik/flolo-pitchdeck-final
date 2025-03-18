@@ -11,10 +11,10 @@ const sections = [
   { id: 'market', label: 'Market Opportunity' },
   { id: 'why-invest', label: 'Why Invest' },
   { id: 'video-section', label: 'Client Content' },
-  { id: 'investor-types', label: 'Who Should Invest' },
   { id: 'team', label: 'Founder Spotlight' },
   { id: 'financials', label: 'Financial Performance' },
   { id: 'investment', label: 'Investment Opportunity' },
+  { id: 'investor-types', label: 'Investor Profile' }
 ]
 
 export default function Navigation() {
