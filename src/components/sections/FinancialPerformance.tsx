@@ -92,11 +92,11 @@ const PLRow = ({
 
   return (
     <div className={`grid grid-cols-3 ${rowClasses}`}>
-      <div className={`${baseClasses} ${isHeader ? 'text-left' : 'pl-6'}`}>{label}</div>
-      <div className={`${baseClasses} text-right`}>
+      <div className={`${baseClasses} ${isHeader ? 'text-left' : 'pl-6'} break-words`}>{label}</div>
+      <div className={`${baseClasses} text-right whitespace-nowrap`}>
         {monthly !== undefined ? formatCurrency(monthly) : ''}
       </div>
-      <div className={`${baseClasses} text-right`}>
+      <div className={`${baseClasses} text-right whitespace-nowrap`}>
         {annual !== undefined ? formatCurrency(annual) : ''}
       </div>
     </div>

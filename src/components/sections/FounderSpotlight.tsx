@@ -96,11 +96,11 @@ export default function FounderSpotlight() {
               {expertise.map((item) => (
                 <div
                   key={item.area}
-                  className="text-center p-4 bg-primary/5 rounded-lg"
+                  className="text-center p-4 bg-primary/5 rounded-lg flex flex-col items-center"
                 >
                   <div className="text-2xl mb-2">{item.icon}</div>
-                  <div className="font-semibold text-primary">{item.years}</div>
-                  <div className="text-sm text-gray-600">{item.area}</div>
+                  <div className="font-semibold text-primary mb-1">{item.years}</div>
+                  <div className="text-sm text-gray-600 break-words w-full">{item.area}</div>
                 </div>
               ))}
             </div>
