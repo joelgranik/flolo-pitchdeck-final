@@ -1,6 +1,6 @@
 import './globals.css'
 import { Montserrat, Open_Sans } from 'next/font/google'
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 
 // Font configuration
 const montserrat = Montserrat({ 
@@ -14,6 +14,14 @@ const openSans = Open_Sans({
   variable: '--font-opensans',
   display: 'swap',
 })
+
+// Viewport configuration
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  themeColor: '#4CAF50',
+}
 
 // Metadata for SEO
 export const metadata: Metadata = {
@@ -46,12 +54,6 @@ export const metadata: Metadata = {
     images: ['/images/Logo Purple Landscape.png'],
     creator: '@floloholistic',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
-  themeColor: '#4CAF50',
 }
 
 export default function RootLayout({
