@@ -94,7 +94,7 @@ const marketCards: MarketCard[] = [
     icon: '🗽',
     content: {
       type: 'bullets',
-      title: 'Why NYC is the Perfect Market',
+      title: '',
       points: [
         'Large, affluent, health-conscious population',
         'High stress levels create demand for wellness services',
@@ -110,7 +110,7 @@ const marketCards: MarketCard[] = [
     icon: '🌟',
     content: {
       type: 'bullets',
-      title: 'Post-Pandemic Wellness Trends',
+      title: '',
       points: [
         'Greater focus on mental health and stress reduction',
         'Increased awareness of immune system health',
@@ -156,7 +156,7 @@ export default function MarketOpportunity() {
         {marketCards.map((card, index) => (
           <div key={card.name} className="mb-8">
             <motion.div
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 relative ${
                 activeCard === index
                   ? 'bg-primary text-white shadow-lg'
                   : 'bg-white hover:bg-primary/5'
@@ -172,6 +172,14 @@ export default function MarketOpportunity() {
               }`}>
                 {card.description}
               </p>
+              {/* Click indicator */}
+              <div className={`absolute top-4 right-4 ${
+                activeCard === index ? 'text-white' : 'text-primary'
+              }`}>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
             </motion.div>
             
             {activeCard === index && (
@@ -183,9 +191,11 @@ export default function MarketOpportunity() {
                 className="mt-4"
               >
                 <div className="bg-white p-6 rounded-lg shadow-lg">
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">
-                    {card.content.title}
-                  </h3>
+                  {card.content.title && (
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">
+                      {card.content.title}
+                    </h3>
+                  )}
                   {card.content.type === 'chart' ? (
                     <div className="w-full h-[300px]">
                       <Bar options={chartOptions} data={chartData} />
@@ -214,7 +224,7 @@ export default function MarketOpportunity() {
           {marketCards.map((card, index) => (
             <motion.div
               key={card.name}
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 ${
+              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 relative ${
                 activeCard === index
                   ? 'bg-primary text-white shadow-lg scale-105'
                   : 'bg-white hover:bg-primary/5'
@@ -230,6 +240,14 @@ export default function MarketOpportunity() {
               }`}>
                 {card.description}
               </p>
+              {/* Click indicator */}
+              <div className={`absolute top-4 right-4 ${
+                activeCard === index ? 'text-white' : 'text-primary'
+              }`}>
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -242,9 +260,11 @@ export default function MarketOpportunity() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              {marketCards[activeCard].content.title}
-            </h3>
+            {marketCards[activeCard].content.title && (
+              <h3 className="text-xl font-bold text-gray-900 mb-4">
+                {marketCards[activeCard].content.title}
+              </h3>
+            )}
             {marketCards[activeCard].content.type === 'chart' ? (
               <div className="w-full h-[400px]">
                 <Bar options={chartOptions} data={chartData} />
