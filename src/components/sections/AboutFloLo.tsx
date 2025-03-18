@@ -89,14 +89,14 @@ export default function AboutFloLo() {
       {/* Mobile Layout */}
       <div className="md:hidden">
         {services.map((service, index) => (
-          <div key={service.name} className="mb-8">
+          <div key={service.name} className="mb-8 relative">
             <motion.div
               className={`p-6 rounded-lg cursor-pointer transition-all duration-300 ${
                 activeService === index
                   ? 'bg-primary text-white shadow-lg'
                   : 'bg-white hover:bg-primary/5'
               }`}
-              onClick={(e) => handleServiceClick(index, e)}
+              onClick={() => setActiveService(activeService === index ? -1 : index)}
               whileHover={{ scale: activeService === index ? 1.05 : 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -115,7 +115,8 @@ export default function AboutFloLo() {
                 animate={{ opacity: 1, height: 'auto' }}
                 exit={{ opacity: 0, height: 0 }}
                 transition={{ duration: 0.3 }}
-                className="mt-4"
+                className="mt-4 relative"
+                style={{ overflow: 'hidden' }}
               >
                 <div className="bg-white p-4 rounded-lg shadow-lg overflow-hidden">
                   <div className="w-full h-[250px] relative rounded-lg overflow-hidden">
