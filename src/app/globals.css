@@ -4,6 +4,17 @@
 
 @import '../styles/globals.css';
 
+/* Remove focus outline but maintain accessibility */
+*:focus {
+  outline: none !important;
+}
+
+/* Custom focus styles for interactive elements */
+a:focus-visible,
+button:focus-visible {
+  @apply ring-2 ring-white/30 ring-offset-1 ring-offset-transparent rounded;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;

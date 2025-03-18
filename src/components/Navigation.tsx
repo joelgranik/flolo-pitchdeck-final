@@ -79,7 +79,7 @@ export default function Navigation() {
                 <Link
                   key={section.id}
                   href={`#${section.id}`}
-                  className={`text-white hover:text-gray-200 relative group transition-colors duration-200 ${
+                  className={`text-white hover:text-gray-200 relative group transition-colors duration-200 focus:outline-none ${
                     activeSection === section.id ? 'font-medium' : ''
                   }`}
                 >
@@ -128,7 +128,7 @@ export default function Navigation() {
                   <Link
                     key={section.id}
                     href={`#${section.id}`}
-                    className={`block px-3 py-2 text-white hover:text-gray-200 relative group transition-colors duration-200 ${
+                    className={`block px-3 py-2 text-white hover:text-gray-200 relative group transition-colors duration-200 focus:outline-none ${
                       activeSection === section.id ? 'font-medium' : ''
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
