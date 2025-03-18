@@ -139,6 +139,21 @@ const marketCards: MarketCard[] = [
 export default function MarketOpportunity() {
   const [activeCard, setActiveCard] = useState(0)
 
+  const handleCardClick = (index: number, event: React.MouseEvent) => {
+    event.preventDefault()
+    const card = event.currentTarget as HTMLElement
+    const cardRect = card.getBoundingClientRect()
+    const scrollOffset = window.scrollY + cardRect.top - 100 // Account for nav bar
+
+    setActiveCard(index)
+    
+    // Smooth scroll to the clicked card
+    window.scrollTo({
+      top: scrollOffset,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <SectionWrapper id="market" className="bg-white">
       <div className="max-w-4xl mx-auto text-center mb-16">
@@ -161,7 +176,7 @@ export default function MarketOpportunity() {
                   ? 'bg-primary text-white shadow-lg'
                   : 'bg-white hover:bg-primary/5'
               }`}
-              onClick={() => setActiveCard(index)}
+              onClick={(e) => handleCardClick(index, e)}
               whileHover={{ scale: activeCard === index ? 1.05 : 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -229,7 +244,7 @@ export default function MarketOpportunity() {
                   ? 'bg-primary text-white shadow-lg scale-105'
                   : 'bg-white hover:bg-primary/5'
               }`}
-              onClick={() => setActiveCard(index)}
+              onClick={(e) => handleCardClick(index, e)}
               whileHover={{ scale: activeCard === index ? 1.05 : 1.02 }}
               whileTap={{ scale: 0.98 }}
             >

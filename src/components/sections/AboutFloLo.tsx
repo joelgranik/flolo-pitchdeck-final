@@ -59,6 +59,21 @@ const services = [
 export default function AboutFloLo() {
   const [activeService, setActiveService] = useState(0)
 
+  const handleServiceClick = (index: number, event: React.MouseEvent) => {
+    event.preventDefault()
+    const service = event.currentTarget as HTMLElement
+    const serviceRect = service.getBoundingClientRect()
+    const scrollOffset = window.scrollY + serviceRect.top - 100 // Account for nav bar
+
+    setActiveService(index)
+    
+    // Smooth scroll to the clicked service
+    window.scrollTo({
+      top: scrollOffset,
+      behavior: 'smooth'
+    })
+  }
+
   return (
     <SectionWrapper id="about" className="bg-gray-50">
       <div className="max-w-4xl mx-auto text-center mb-16">
@@ -81,7 +96,7 @@ export default function AboutFloLo() {
                   ? 'bg-primary text-white shadow-lg'
                   : 'bg-white hover:bg-primary/5'
               }`}
-              onClick={() => setActiveService(index)}
+              onClick={(e) => handleServiceClick(index, e)}
               whileHover={{ scale: activeService === index ? 1.05 : 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -136,7 +151,7 @@ export default function AboutFloLo() {
                   ? 'bg-primary text-white shadow-lg scale-105'
                   : 'bg-white hover:bg-primary/5'
               }`}
-              onClick={() => setActiveService(index)}
+              onClick={(e) => handleServiceClick(index, e)}
               whileHover={{ scale: activeService === index ? 1.05 : 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
