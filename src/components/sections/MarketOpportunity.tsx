@@ -152,68 +152,52 @@ export default function MarketOpportunity() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="md:hidden">
+      <div className="md:hidden space-y-8">
         {marketCards.map((card, index) => (
-          <div key={card.name} className="mb-8 relative">
+          <div key={card.name} className="relative">
             <motion.div
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 relative ${
-                activeCard === index
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'bg-white hover:bg-primary/5'
-              }`}
-              onClick={() => setActiveCard(activeCard === index ? -1 : index)}
-              whileHover={{ scale: activeCard === index ? 1.05 : 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="p-6 rounded-lg bg-white hover:bg-primary/5 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="text-4xl mb-3">{card.icon}</div>
               <h3 className="font-semibold mb-2">{card.name}</h3>
-              <p className={`text-sm ${
-                activeCard === index ? 'text-white/90' : 'text-gray-600'
-              }`}>
+              <p className="text-sm text-gray-600">
                 {card.description}
               </p>
-              {/* Click indicator */}
-              <div className={`absolute top-4 right-4 ${
-                activeCard === index ? 'text-white' : 'text-primary'
-              } animate-pulse`}>
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-                </svg>
-              </div>
             </motion.div>
             
-            {activeCard === index && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-4 relative"
-                style={{ overflow: 'hidden' }}
-              >
-                <div className="bg-white p-6 rounded-lg shadow-lg">
-                  {card.content.title && (
-                    <h3 className="text-xl font-bold text-gray-900 mb-4">
-                      {card.content.title}
-                    </h3>
-                  )}
-                  {card.content.type === 'chart' ? (
-                    <div className="w-full h-[300px]">
-                      <Bar options={chartOptions} data={chartData} />
-                    </div>
-                  ) : (
-                    <ul className="space-y-3">
-                      {card.content.points.map((point, i) => (
-                        <li key={i} className="flex items-start">
-                          <span className="text-primary mr-2">✓</span>
-                          <span className="text-gray-600">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </div>
-              </motion.div>
-            )}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (index * 0.1) + 0.2 }}
+              className="mt-4"
+            >
+              <div className="bg-white p-6 rounded-lg shadow-lg">
+                {card.content.title && (
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {card.content.title}
+                  </h3>
+                )}
+                {card.content.type === 'chart' ? (
+                  <div className="w-full h-[300px]">
+                    <Bar options={chartOptions} data={chartData} />
+                  </div>
+                ) : (
+                  <ul className="space-y-3">
+                    {card.content.points.map((point, i) => (
+                      <li key={i} className="flex items-start">
+                        <span className="text-primary mr-2">✓</span>
+                        <span className="text-gray-600">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            </motion.div>
           </div>
         ))}
       </div>

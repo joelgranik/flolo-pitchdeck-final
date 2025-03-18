@@ -87,55 +87,47 @@ export default function AboutFloLo() {
       </div>
 
       {/* Mobile Layout */}
-      <div className="md:hidden">
+      <div className="md:hidden space-y-8">
         {services.map((service, index) => (
-          <div key={service.name} className="mb-8 relative">
+          <div key={service.name} className="relative">
             <motion.div
-              className={`p-6 rounded-lg cursor-pointer transition-all duration-300 ${
-                activeService === index
-                  ? 'bg-primary text-white shadow-lg'
-                  : 'bg-white hover:bg-primary/5'
-              }`}
-              onClick={() => setActiveService(activeService === index ? -1 : index)}
-              whileHover={{ scale: activeService === index ? 1.05 : 1.02 }}
-              whileTap={{ scale: 0.98 }}
+              className="p-6 rounded-lg bg-white hover:bg-primary/5 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="text-4xl mb-3">{service.icon}</div>
               <h3 className="font-semibold mb-2">{service.name}</h3>
-              <p className={`text-sm ${
-                activeService === index ? 'text-white/90' : 'text-gray-600'
-              }`}>
+              <p className="text-sm text-gray-600">
                 {service.description}
               </p>
             </motion.div>
             
-            {activeService === index && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="mt-4 relative"
-                style={{ overflow: 'hidden' }}
-              >
-                <div className="bg-white p-4 rounded-lg shadow-lg overflow-hidden">
-                  <div className="w-full h-[250px] relative rounded-lg overflow-hidden">
-                    <Image
-                      src={service.image}
-                      alt={service.name}
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
-                      <h3 className="text-xl font-bold text-white">
-                        {service.name}
-                      </h3>
-                    </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: (index * 0.1) + 0.2 }}
+              className="mt-4"
+            >
+              <div className="bg-white p-4 rounded-lg shadow-lg overflow-hidden">
+                <div className="w-full h-[250px] relative rounded-lg overflow-hidden">
+                  <Image
+                    src={service.image}
+                    alt={service.name}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4">
+                    <h3 className="text-xl font-bold text-white">
+                      {service.name}
+                    </h3>
                   </div>
                 </div>
-              </motion.div>
-            )}
+              </div>
+            </motion.div>
           </div>
         ))}
       </div>
