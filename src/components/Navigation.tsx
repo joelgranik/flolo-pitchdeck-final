@@ -20,11 +20,29 @@ const sections = [
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+
+      // Find the current section
+      const sectionElements = sections.map(section => ({
+        id: section.id,
+        element: document.getElementById(section.id)
+      })).filter(item => item.element)
+
+      const currentSection = sectionElements.find(section => {
+        if (!section.element) return false
+        const rect = section.element.getBoundingClientRect()
+        return rect.top <= 100 && rect.bottom >= 100
+      })
+
+      if (currentSection) {
+        setActiveSection(currentSection.id)
+      }
     }
+
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -61,9 +79,14 @@ export default function Navigation() {
                 <Link
                   key={section.id}
                   href={`#${section.id}`}
-                  className="text-white hover:text-gray-200 transition-colors duration-200"
+                  className={`text-white hover:text-gray-200 relative group transition-colors duration-200 ${
+                    activeSection === section.id ? 'font-medium' : ''
+                  }`}
                 >
                   {section.label}
+                  <span className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-all duration-300 ease-out ${
+                    activeSection === section.id ? 'bg-white/30' : 'bg-white/0 group-hover:bg-white/20'
+                  }`} />
                 </Link>
               ))}
             </div>
@@ -105,10 +128,15 @@ export default function Navigation() {
                   <Link
                     key={section.id}
                     href={`#${section.id}`}
-                    className="block px-3 py-2 text-white hover:text-gray-200 transition-colors duration-200"
+                    className={`block px-3 py-2 text-white hover:text-gray-200 relative group transition-colors duration-200 ${
+                      activeSection === section.id ? 'font-medium' : ''
+                    }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {section.label}
+                    <span className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-all duration-300 ease-out ${
+                      activeSection === section.id ? 'bg-white/30' : 'bg-white/0 group-hover:bg-white/20'
+                    }`} />
                   </Link>
                 ))}
                 <div className="px-3 py-2 flex justify-center">
