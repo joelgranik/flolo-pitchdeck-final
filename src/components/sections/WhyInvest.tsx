@@ -39,9 +39,10 @@ const reasons = [
     description: 'Diversified services creating stable income',
     icon: '💰',
     details: [
-      'Float therapy',
-      'Wellness services',
-      'Retail products',
+      'Wellness Services',
+      'Healing Rooms',
+      'Retail Products',
+      'Venue Rentals'
     ],
   },
 ]
